@@ -7,7 +7,7 @@ module "vpc" {
   azs             = var.vpc_availability_zones
   public_subnets  = var.vpc_public_subnets
   private_subnets = var.vpc_private_subnets
-
+  
   #database subnets
   #My database dont need any public connections via NAT or Internet Gateway
   create_database_subnet_group       = var.vpc_create_database_subnet_group
