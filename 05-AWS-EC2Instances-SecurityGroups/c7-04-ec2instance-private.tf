@@ -3,7 +3,7 @@ module "ec2-private" {
   source                 = "terraform-aws-modules/ec2-instance/aws"
   version                = "6.3.0"
   count                  = length(module.vpc.private_subnets)
-  name                   = "${var.environment}-vm"
+  name                   = "${var.environment}-vm-${count.index}"
   ami                    = data.aws_ami.amzlinux2023.id
   instance_type          = var.instance_type
   key_name               = var.instance_keypair
