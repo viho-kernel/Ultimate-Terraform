@@ -9,7 +9,6 @@ module "public_bastion_sg" {
   #Ingress Rules
   ingress_rules       = ["ssh-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
-
   #Egress Rules
   egress_rules = ["all-all"]
 
