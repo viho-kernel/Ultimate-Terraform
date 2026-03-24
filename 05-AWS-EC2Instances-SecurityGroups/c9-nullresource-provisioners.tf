@@ -20,10 +20,19 @@ resource "null_resource" "name" {
     inline = [
       "sudo chmod 400 /tmp/terraform-key.pem"
     ]
+    on_failure = continue
   }
   provisioner "local-exec" {
     command     = "echo VPC created on `date` and VPC ID: ${module.vpc.vpc_id} >> creation-time-vpc-id.txt"
     working_dir = "local-exec-output-files/"
+    on_failure  = continue
+    when        = create #creation time provisioner.
+  }
+
+  provisioner "local-exec" {
+    command     = "echo Destroy time prov `date` >> destroy-time-prov.txt"
+    working_dir = "local-exec-output-files/"
+    when        = destroy
     #on_failure = continue
   }
 }

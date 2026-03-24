@@ -8,7 +8,7 @@ resource "aws_eip" "bastion_ip" {
   provisioner "local-exec" {
     command     = "echo Destroy time prov `date` >> destroy-time-prov.txt"
     working_dir = "local-exec-output-files/"
-    when        = destroy
+    when        = destroy #deletion time provisioner.
   }
 
 }
